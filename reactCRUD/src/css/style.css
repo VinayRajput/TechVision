@@ -1,0 +1,3 @@
+.table-striped .row:nth-child(odd){
+   background:#fafafa;
+}
