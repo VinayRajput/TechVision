@@ -1,15 +1,8 @@
-const http=require('http');
 const express = require('express');
 const mysql=require('mysql');
-
 const app = express();
-// http.createServer(function(req,res){
-//    res.json({"data":"hi"});
-// }).listen(8080,function(){
-//    console.log('server is running on port 8080');
-// });
 
-app.get('',function(req,res){
+app.get('/',function(req,res){
    
 var con = mysql.createConnection({
       host:"localhost",
@@ -18,15 +11,21 @@ var con = mysql.createConnection({
       database:"TechVisionClass"
    });
    
-   app.connect(function(err){
+   con.connect(function(err){
          if(err) throw err;
          console.log("connected to database");
+         con.query("select * from classes",function(err,data){
+            console.log(err);
+            res.json(err);
+         });
    });
-   res.json();
+});
+ 
+
+app.get('add',function(req,res){
+
+      con.query('insert into teacherseveshift values()')
 
 })
-
-
-
-
+app.listen(8080);
 

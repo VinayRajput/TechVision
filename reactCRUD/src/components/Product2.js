@@ -60,7 +60,7 @@ class Product extends React.Component {
             <br/><br/><br/>
                 <div className="row">
                     <div className="col-md-12 col-xs-12  col-sm-12">
-                        <input type="text" className="form-control" ref="filterBy" onChange={this.filterData} />
+                        <input type="text" className="form-control" ref="filterBy" onChange={this.filterData} placeholder="Type a letter" />
                     </div>
                 </div>
                 <hr/>
