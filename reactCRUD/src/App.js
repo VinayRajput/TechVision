@@ -15,7 +15,8 @@ class  App extends React.Component {
     return (
       <div>
       <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-       <Product/>
+      
+       {/* <Product/> */}
       {/* <Session/> */}
       </div>
     )

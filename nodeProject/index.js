@@ -2,8 +2,6 @@ const express = require('express');
 const mysql=require('mysql');
 const app = express();
 
-app.get('/',function(req,res){
-   
 var con = mysql.createConnection({
       host:"localhost",
       user:"root",
@@ -14,18 +12,41 @@ var con = mysql.createConnection({
    con.connect(function(err){
          if(err) throw err;
          console.log("connected to database");
-         con.query("select * from classes",function(err,data){
-            console.log(err);
-            res.json(err);
-         });
    });
+
+app.get('/',function(req,res){
+      con.query("select * from classes",function(err,data){
+            console.log(data);
+            res.json(data);
+         });
 });
- 
+app.get('/add',function(req,res){
+      con.query('insert into teacherseveshift(fname, lname, expertise) values("Jasmeeet","Singh","mai bhool gaya");',function(err,data){
+            if(err)
+                  console.log(err);
+            console.log(data);            
+            res.json(data);
+      });
+})
 
-app.get('add',function(req,res){
 
-      con.query('insert into teacherseveshift values()')
+app.get('/update',function(req,res){
+      con.query('update teacherseveshift set expertise="yadd haii-" where fname="Jasmeeet" ; ',function(err,data){
+            if(err)
+                  console.log(err);
+            console.log(data);            
+            res.json(data);
+      });
+})
 
+
+app.get('/delete',function(req,res){
+      con.query('delete from teacherseveshift where id=1;',function(err,data){
+            if(err)
+                  console.log(err);
+            console.log(data);            
+            res.json(data);
+      });
 })
 app.listen(8080);
 
