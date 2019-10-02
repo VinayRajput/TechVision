@@ -2,8 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const app = express();
 const bodyParser = require('body-parser');
-
-
+const multer = require('multer');
 app.use(function (req, res, next) {
    res.header('Access-Control-Allow-Origin', '*');
    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -13,6 +12,27 @@ app.use(function (req, res, next) {
    next();
 });
 app.use(bodyParser.json());
+
+var storage =   multer.diskStorage({
+   destination: function (req, file, callback) {
+     callback(null, './uploads');
+   },
+   filename: function (req, file, callback) {
+     callback(null, file.fieldname + '-' + Date.now());
+   }
+ });
+ var upload = multer({ storage : storage}).single('userPhoto');
+ 
+
+dbQuery =(sqlQuery,cb) =>{
+   con.query(sqlQuery,function(err,response){
+      if(err){
+         console.log(err)
+          return {error:err}
+      }
+      cb(response);
+   })
+}
 
 var con = mysql.createConnection({
    host: "localhost",
@@ -45,6 +65,10 @@ app.post('/addDriver', function (req, res) {
 
   })
 
+app.get('/',function(req,res){
+   res.send("<h3>Server running, hit with correct request! <3   </h3>")
+})
+
 
 app.get('/getDrivers', function (req, res) {
    res.header("Access-Control-Allow-Origin", "*");
@@ -69,23 +93,38 @@ app.delete('/deleteDriver/:id', function (req, res) {
       res.json(data);
    });
 });
+
 app.post('/updateDriver', function (req, res) {
-   res.header("Access-Control-Allow-Origin", "*");
+   //res.header("Access-Control-Allow-Origin", "*");
+   console.log(req.files);
+   upload(req,res,function(err) {
+         if(err) {
+             return res.end("Error uploading file.");
+         }
+         res.end("File is uploaded");
+     });
+     
+   
+   res.json({});
+
+
+   return;
+
    //let {name,dob,id} from req.params;
 
-   let driverDetails = {
-      name: req.param("name"),
-      dob: req.param("dob"),
-      id: req.param("id")
-   }
-   con.query(`update drivers set 
-         name = ${req.param.name}
-         dob = ${req.param.dob}
-         license = ${req.param.license}
-   `, function (err, data) {
-      res.json(data);
-   });
+   let driverDetails = req.param("data");
+   let files = req.param("files");
 
+   const sqlQuery = `update drivers set name='${driverDetails.name}', dob='${driverDetails.dob}', license='${driverDetails.license}' where id=${driverDetails.id};`;
+
+   console.log(sqlQuery);
+
+   /* dbQuery(sqlQuery,function(response){
+      console.log(sqlQuery);
+      console.log(response);
+      res.json(response);
+   }); */
+})
 
 
 
@@ -124,10 +163,6 @@ app.get('/getVehicle/:id', function (req, res) {
 
 
 
-   console.log('alert("Update Driver API recevied following data: ' + driverDetails.name + '")');
-
-   res.send('alert("Update Drivrer API recevied following data: ' + driverDetails.name + '")');
-})
 
 
 

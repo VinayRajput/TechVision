@@ -23,15 +23,15 @@ class Drivers extends Component {
 
    addDriver = () => {
       let driverObj = {
-         name:this.refs.name.value,
-         dob:this.refs.dob.value,
-         license:this.refs.license.value
-         };
-         
-      fetch(this.state.serverConfig.host + '/addDriver',{
-         method:'POST',
-         body:JSON.stringify(driverObj),
-         headers:{'Content-Type':"application/json"}
+         name: this.refs.name.value,
+         dob: this.refs.dob.value,
+         license: this.refs.license.value
+      };
+
+      fetch(this.state.serverConfig.host + '/addDriver', {
+         method: 'POST',
+         body: JSON.stringify(driverObj),
+         headers: { 'Content-Type': "application/json" }
       }).
          then(res => res.json())/* .
          then((res) => {
@@ -40,38 +40,53 @@ class Drivers extends Component {
          }) */
    }
 
-editDriverDetails =(id)=>{
-   const driverDetail = this.state.DriversList.filter(driver => driver.id==id)[0];
-   this.refs.name.value=driverDetail.name;
-   this.refs.dob.value=this.makeDate(driverDetail.dob);
-   this.refs.license.value=driverDetail.license;
-}
-editDriverProfile = (id)=>{
-      fetch(this.state.serverConfig.host+`/getDriver/${id}`).
-      then(res => res.json()).
-      then(res => this.setState({driverProfileToEdit:res}) );
-}
+   editDriverDetails = (id) => {
+      const driverDetail = this.state.DriversList.filter(driver => driver.id == id)[0];
+      this.refs.name.value = driverDetail.name;
+      this.refs.dob.value = this.makeDate(driverDetail.dob);
+      this.refs.license.value = driverDetail.license;
+      this.setState({ 'driverDetailEdited': id });
+   }
 
+   editDriverProfile = (id) => {
+      fetch(this.state.serverConfig.host + `/getDriver/${id}`).
+         then(res => res.json()).
+         then(res => this.setState({ driverProfileToEdit: res }));
+   }
 
    updateDriver = () => {
       let driverDetails = {
          name: this.refs.name.value,
-         dob: this.makeDate(this.refs.dob.value),
-         license:this.refs.license.value
+         dob: this.getDate(this.refs.dob.value),
+         license: this.refs.license.value,
+         id: this.state.driverDetailEdited
       }
+      
+      let formData = new FormData();
+      formData.append(this.refs.photo.files[0].name.split('.')[0], this.refs.photo.files[0]);
+      for(let file of this.refs.documents.files){
+         formData.append(file.name.split('.')[0], file ); 
+      }
+
       fetch(this.state.serverConfig.host + "/updateDriver", {
-         method:'post',
-         body:JSON.stringify(driverDetails),
-         headers:{'Content-Type':'application/json'}
+         method: 'post',
+         body:  formData,
+         //headers: { 'Content-Type': 'application/json' }
       }).then(res => res.json());
    }
 
    makeDate = (data) => {
       var date = new Date(data);
       var month = date.getMonth() + 1;
-      return  date.getDate() + "/" +(month.toString().length > 1 ? month : "0" + month)+"/"+ date.getFullYear();
-  }
-   
+      return date.getDate() + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear();
+   }
+
+   getDate = (dateStr) => {
+      const date = dateStr.split('/');
+      const dbDate = `${date[2]}-${(date[1] < 10) ? '0' + parseInt(date[1]) : date[1]}-${(date[0] < 10) ? '0' + parseInt(date[0]) : date[0]}`;
+      return dbDate;
+   }
+
    render () {
 
       return (
@@ -106,9 +121,9 @@ editDriverProfile = (id)=>{
                         {this.makeDate(driver.dob)}
                      </div>
                      <div className="col-xs-3 col-md-3 col-sm-3">
-                        <button className="btn btn-link btn-sm" onClick={ ()=>{this.editDriverDetails(driver.id)} }>Edit</button>&nbsp; 
+                        <button className="btn btn-link btn-sm" onClick={() => { this.editDriverDetails(driver.id) }}>Edit</button>&nbsp;
                         <button className="btn btn-link btn-sm no-padding" onClick={
-                           ()=>{this.deleteDriver(driver.id)}
+                           () => { this.deleteDriver(driver.id) }
                         }>Delete</button>
                      </div>
                   </div>
@@ -123,13 +138,13 @@ editDriverProfile = (id)=>{
                </div>
                <input type="text" ref="license" placeholder="license" className="form-control" required />
                <input type="text" ref="dob" placeholder="Date of birth" className="form-control" required />
-               <input type="file" ref="photo" placeholder="Attach your photo" className="form-control"  />
-               <input type="file" ref="documents" className="form-control" />
-               <button type="button" className="btn btn-info btn-sm" onClick={this.addDriver}>Add Driver</button>   
-                           &nbsp;
+               <input type="file" ref="photo" placeholder="Attach your photo" className="form-control" />
+               <input type="file" ref="documents" className="form-control" multiple />
+               <button type="button" className="btn btn-info btn-sm" onClick={this.addDriver}>Add Driver</button>
+               &nbsp;
                <button type="button" className="btn btn-info btn-sm" onClick={this.updateDriver}>Update Driver Details</button>
-            </form> 
-            
+            </form>
+
          </div>)
    }
 }

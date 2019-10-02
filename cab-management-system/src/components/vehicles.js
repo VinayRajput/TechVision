@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Vehicles extends Component{
    constructor(props){
-      super();
+      super(props);
       this.state={
          serverConfig:props.serverConfig,
          VehiclesList:[]
