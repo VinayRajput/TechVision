@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {NavLink} from 'react-router-dom';
 //import util from './util';
 
 
@@ -12,7 +13,7 @@ class Drivers extends Component {
          },
          DriversList: []
       }
-//      util.checkSession(localStorage.getItem('sessionID'));
+      //      util.checkSession(localStorage.getItem('sessionID'));
       this.fetchDriversList();
    }
 
@@ -27,17 +28,17 @@ class Drivers extends Component {
 
    addDriver = () => {
       let driverObj = new FormData()
-      driverObj.append('name',this.refs.name.value);
-      driverObj.append('dob',this.refs.dob.value);
-      driverObj.append('license',this.refs.license.value);
+      driverObj.append('name', this.refs.name.value);
+      driverObj.append('dob', this.refs.dob.value);
+      driverObj.append('license', this.refs.license.value);
 
-      axios.post(this.state.serverConfig.host + '/addDriver',driverObj)
-      .then(function(response){
-         console.log(response);
-      })
-      .catch(function(err){
-         console.log(err);
-      });
+      axios.post(this.state.serverConfig.host + '/addDriver', driverObj)
+         .then(function (response) {
+            console.log(response);
+         })
+         .catch(function (err) {
+            console.log(err);
+         });
    }
 
    editDriverDetails = (id) => {
@@ -71,7 +72,7 @@ class Drivers extends Component {
    }
 
    updateDriver = () => {
-      
+
       let driverObj = new FormData()
       //driverObj.append('name',this.refs.name.value);
       //driverObj.append('dob',this.refs.dob.value);
@@ -82,15 +83,15 @@ class Drivers extends Component {
 
       for (let file of this.refs.documents.files) {
          //driverObj.append("icons", file);
-      driverObj.append(file.name.split('.')[0], file);
+         driverObj.append(file.name.split('.')[0], file);
       }
-      axios.post(this.state.serverConfig.host + '/updateDriver',driverObj)
-      .then(function(response){
-         console.log(response);
-      })
-      .catch(function(err){
-         console.log(err);
-      });
+      axios.post(this.state.serverConfig.host + '/updateDriver', driverObj)
+         .then(function (response) {
+            console.log(response);
+         })
+         .catch(function (err) {
+            console.log(err);
+         });
 
 
    }
@@ -141,7 +142,10 @@ class Drivers extends Component {
                         {this.makeDate(driver.dob)}
                      </div>
                      <div className="col-xs-3 col-md-3 col-sm-3">
-                        <button className="btn btn-link btn-sm" onClick={() => { this.editDriverDetails(driver.id) }}>Edit</button>&nbsp;
+
+                        {/*<button className="btn btn-link btn-sm" onClick={() => { this.editDriverDetails(driver.id) }}>Edit</button>&nbsp; */}
+
+                        <NavLink to={`/drivers/edit/${driver.id}`}>Edit</NavLink>
                         <button className="btn btn-link btn-sm no-padding" onClick={
                            () => { this.deleteDriver(driver.id) }
                         }>Delete</button>
@@ -149,22 +153,6 @@ class Drivers extends Component {
                   </div>
 
                )}</div>
-
-            <hr />
-            <h2>Add / Edit Driver Form</h2>
-            <form ref="addEditDriver">
-               <div className="">
-                  <input type="text" ref="name" placeholder="Enter Driver Name" className="form-control" required />
-               </div>
-               <input type="text" ref="license" placeholder="license" className="form-control" required />
-               <input type="text" ref="dob" placeholder="Date of birth" className="form-control" required />
-               <input type="file" ref="photo" placeholder="Attach your photo" className="form-control" />
-               <input type="file" ref="documents" className="form-control" multiple />
-               <button type="button" className="btn btn-info btn-sm" onClick={this.addDriver}>Add Driver</button>
-               &nbsp;
-               <button type="button" className="btn btn-info btn-sm" onClick={this.updateDriver}>Update Driver Details</button>
-            </form>
-
          </div>)
    }
 }
