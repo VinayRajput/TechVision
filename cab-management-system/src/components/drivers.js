@@ -1,47 +1,47 @@
 import React, { Component } from 'react';
-import { RSA_NO_PADDING } from 'constants';
-import { thisExpression } from '@babel/types';
+import axios from 'axios';
+//import util from './util';
+
 
 class Drivers extends Component {
    constructor (props) {
       super();
       this.state = {
-         serverConfig: props.serverConfig,
+         serverConfig: {
+            host: 'http://localhost:8080'
+         },
          DriversList: []
-      };
+      }
+//      util.checkSession(localStorage.getItem('sessionID'));
       this.fetchDriversList();
    }
 
    fetchDriversList = () => {
-      fetch(this.state.serverConfig.host + '/getDrivers').
-         then(response => response.json()).
-         then(data => {
-            this.setState({ DriversList: data })
+      fetch(this.state.serverConfig.host + '/getDrivers')
+         .then(response => response.json())
+         .then(data => {
+            this.setState({ DriversList: data });
             console.log(data);
          });
    }
 
    addDriver = () => {
-      let driverObj = {
-         name: this.refs.name.value,
-         dob: this.refs.dob.value,
-         license: this.refs.license.value
-      };
+      let driverObj = new FormData()
+      driverObj.append('name',this.refs.name.value);
+      driverObj.append('dob',this.refs.dob.value);
+      driverObj.append('license',this.refs.license.value);
 
-      fetch(this.state.serverConfig.host + '/addDriver', {
-         method: 'POST',
-         body: JSON.stringify(driverObj),
-         headers: { 'Content-Type': "application/json" }
-      }).
-         then(res => res.json())/* .
-         then((res) => {
-            this.state.messages.push(res);
-            //this.showConfirmation();
-         }) */
+      axios.post(this.state.serverConfig.host + '/addDriver',driverObj)
+      .then(function(response){
+         console.log(response);
+      })
+      .catch(function(err){
+         console.log(err);
+      });
    }
 
    editDriverDetails = (id) => {
-      const driverDetail = this.state.DriversList.filter(driver => driver.id == id)[0];
+      const driverDetail = this.state.DriversList.filter(driver => driver.id === id)[0];
       this.refs.name.value = driverDetail.name;
       this.refs.dob.value = this.makeDate(driverDetail.dob);
       this.refs.license.value = driverDetail.license;
@@ -49,30 +49,50 @@ class Drivers extends Component {
    }
 
    editDriverProfile = (id) => {
-      fetch(this.state.serverConfig.host + `/getDriver/${id}`).
-         then(res => res.json()).
-         then(res => this.setState({ driverProfileToEdit: res }));
+      fetch(this.state.serverConfig.host + `/getDriver/${id}`)
+         .then(res => res.json())
+         .then(res => this.setState({ driverProfileToEdit: res }));
+   }
+
+   imgBase64 = (file, url) => {
+      let img = new Image();
+      let ctx = new CanvasRenderingContext2D();
+
+      img.onload = function () {
+         ctx.drawImage(this, 0, 0, 600, 600,       // `this` is now image
+            0, 0, 200, 200);
+         // this line needs to go here
+         var dataImg = this.refs.canvas.toDataURL(); // note `me` being used here
+         console.log(dataImg);
+         // consider a callback to pass result to next function in chain
+      };
+      // set src last
+      img.src = url;
    }
 
    updateDriver = () => {
-      let driverDetails = {
-         name: this.refs.name.value,
-         dob: this.getDate(this.refs.dob.value),
-         license: this.refs.license.value,
-         id: this.state.driverDetailEdited
-      }
       
-      let formData = new FormData();
-      formData.append(this.refs.photo.files[0].name.split('.')[0], this.refs.photo.files[0]);
-      for(let file of this.refs.documents.files){
-         formData.append(file.name.split('.')[0], file ); 
-      }
+      let driverObj = new FormData()
+      //driverObj.append('name',this.refs.name.value);
+      //driverObj.append('dob',this.refs.dob.value);
+      //driverObj.append('license',this.refs.license.value);
 
-      fetch(this.state.serverConfig.host + "/updateDriver", {
-         method: 'post',
-         body:  formData,
-         //headers: { 'Content-Type': 'application/json' }
-      }).then(res => res.json());
+      //debugger;
+      //driverObj.append(this.refs.photo.files[0].name.split('.')[0],this.refs.photo.files[0]);
+
+      for (let file of this.refs.documents.files) {
+         //driverObj.append("icons", file);
+      driverObj.append(file.name.split('.')[0], file);
+      }
+      axios.post(this.state.serverConfig.host + '/updateDriver',driverObj)
+      .then(function(response){
+         console.log(response);
+      })
+      .catch(function(err){
+         console.log(err);
+      });
+
+
    }
 
    makeDate = (data) => {

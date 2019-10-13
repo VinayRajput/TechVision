@@ -8,6 +8,12 @@
 		},
 		{
 			"path": "nodeProject"
+		},
+		{
+			"path": "router_in_seperate_page"
+		},
+		{
+			"path": "reactrouting"
 		}
 	],
 	"settings": {}

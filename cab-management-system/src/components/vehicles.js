@@ -1,19 +1,23 @@
 import React, {Component} from 'react';
+//import util from 'util';
 
 class Vehicles extends Component{
    constructor(props){
       super(props);
       this.state={
-         serverConfig:props.serverConfig,
+         serverConfig: {
+            host: 'http://localhost:8080'
+         },
          VehiclesList:[]
       };
+      //util.checkSession(localStorage.getItem('sessionID'));
       this.fetchVehicleData();
    }
 
    fetchVehicleData =()=>{
-      fetch(this.state.serverConfig.host+'/getVehicles').
-      then(res => res.json()).
-      then(res => this.setState({VehiclesList:res}));
+      fetch(this.state.serverConfig.host+'/getVehicles')
+         .then(res => res.json())
+         .then(res => this.setState({VehiclesList:res}));
    }
 
 //   form data submission with 
