@@ -6,10 +6,7 @@ class Dashboard extends React.Component {
       return (
          <div>
             <div>
-               <nav>
-                  <NavLink to="/drivers">Driver</NavLink>
-                  <NavLink to="/bookings">Bookings</NavLink>
-               </nav>
+               Welcome to Dashboard
             </div>
          </div>
       );

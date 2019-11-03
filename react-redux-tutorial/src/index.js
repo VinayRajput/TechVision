@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import postReducer from './reducer/postReducer';
+import PostReducer from './Reducer/reducer';
+import cartMiddleware from './middleware';
 
-const store = createStore(postReducer);
+const store = createStore(PostReducer, applyMiddleware(cartMiddleware));
 
 ReactDOM.render(
    <Provider store={store}>

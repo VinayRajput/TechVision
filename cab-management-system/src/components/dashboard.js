@@ -1,4 +1,6 @@
 import React from 'react';
+import AddPost from './addPost';
+import ShowPost from './showPost';
 
 class Dashboard extends React.Component {
    constructor () {
@@ -8,6 +10,9 @@ class Dashboard extends React.Component {
 
    render () {
       return (<div>This is Dashboard 
+         <hr/>
+         <AddPost/>
+         <ShowPost/> 
         </div>);
    }
 }

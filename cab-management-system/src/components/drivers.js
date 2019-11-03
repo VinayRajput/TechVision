@@ -145,7 +145,7 @@ class Drivers extends Component {
 
                         {/*<button className="btn btn-link btn-sm" onClick={() => { this.editDriverDetails(driver.id) }}>Edit</button>&nbsp; */}
 
-                        <NavLink to={`/drivers/edit/${driver.id}`}>Edit</NavLink>
+                        <NavLink to={`/edit/${driver.id}`}>Edit</NavLink>
                         <button className="btn btn-link btn-sm no-padding" onClick={
                            () => { this.deleteDriver(driver.id) }
                         }>Delete</button>
