@@ -151,7 +151,6 @@ class Drivers extends Component {
                         }>Delete</button>
                      </div>
                   </div>
-
                )}</div>
          </div>)
    }

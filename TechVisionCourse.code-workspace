@@ -1,19 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "reactCRUD"
-		},
-		{
-			"path": "cab-management-system"
-		},
-		{
 			"path": "nodeProject"
 		},
 		{
-			"path": "router_in_seperate_page"
+			"path": "reactrouting"
 		},
 		{
-			"path": "reactrouting"
+			"path": "nodeCrudMVC"
 		}
 	],
 	"settings": {}

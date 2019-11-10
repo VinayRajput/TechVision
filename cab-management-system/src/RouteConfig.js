@@ -14,7 +14,7 @@ export default class RouteConfig extends React.Component {
    render () {
       return (
          <Router history={history}>
-               <Header/>
+            <Header />
             <div>
                <Route path="/" exact component={Dashboard} />
                <Route path="/dashboard" component={Dashboard} />
@@ -24,7 +24,7 @@ export default class RouteConfig extends React.Component {
                <Route path="/vehicles" component={Vehicles} />
                <Route path="/edit/:id" component={EditDriver} />
             </div>
-               <Footer/>
+            <Footer />
          </Router>
       )
    }

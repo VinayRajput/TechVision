@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  background: #fafafa;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+nav a{
+  padding:15px;
+  display: block;
+  background: #fafafa;
+  margin:10px;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding:25px;
+  background:#fafafa;
+}
+
+nav a{
+  cursor: pointer;
+}
+
+.renderPoint{
+  text-align: left;
+  padding:3vw;
+}
