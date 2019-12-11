@@ -1,0 +1,16 @@
+{
+  "name": "courselect",
+  "version": "1.0.0",
+  "description": "Collection of Courses which have configurable subjects which can further configurable at session level",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^3.1.0",
+    "db-migrate-mysql": "^1.1.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinay Rajput",
+  "license": "ISC"
+}
