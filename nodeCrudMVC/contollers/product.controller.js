@@ -6,7 +6,7 @@ exports.add = function (req, res) {
    // model.name = req.name;
    // model.qty = req.qty;
    // code too add prooduct to database
-
+   
 
    res.json({ msg: "added" });
 }

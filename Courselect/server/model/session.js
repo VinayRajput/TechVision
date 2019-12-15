@@ -18,14 +18,7 @@ let session = {
       type:'int',
       notNull:true,
       unsigned:true,
-   },
-   author:{
-      type:'varchar',
-      length:100
-   },
-   topics:{
-      type:'varchar',
-      length:100
+      length:10
    },
    length:{
       require:true,
@@ -38,5 +31,4 @@ let session = {
       length:10
    }
 }
-
 module.exports = session;

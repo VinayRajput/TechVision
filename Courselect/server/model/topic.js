@@ -1,11 +1,11 @@
-let subject = {
+let topic = {
    id: {
-      required: true,
       type: 'int',
       unsigned: true,
       notNull: true,
       primaryKey: true,
       autoIncrement: true,
+      length: 10
    },
    name: {
       required: true,
@@ -25,13 +25,9 @@ let subject = {
       notNull: true,
       length: 10
    },
-   topics: {
-      type: 'varchar',
-      length: 100
-   },
    weightage: {
       type: 'int',
       length: 10
    }
-} 
-module.exports = subject;
+}
+module.exports = topic;

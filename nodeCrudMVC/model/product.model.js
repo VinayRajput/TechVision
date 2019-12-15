@@ -6,4 +6,4 @@ let Product = new Schema({
    qty: { require: true, type:Number }
 })
 
-module.exports = mongoose.model('Product',Product)
+module.exports = mongoose.model('Product',Product);
