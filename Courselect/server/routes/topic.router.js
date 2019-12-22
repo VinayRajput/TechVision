@@ -3,7 +3,7 @@ const router = express.Router();
 const topicController = require('../controller/topic.controller');
 
 router.get('/add',topicController.add);
-router.get('/getById',topicController.getTopicById);
+router.get('/getById/:id',topicController.getTopicById);
 router.get('/getAll',topicController.getAllTopic);
 router.post('/update',topicController.update);
 router.delete('/delete',topicController.delete);

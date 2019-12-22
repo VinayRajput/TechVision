@@ -15,7 +15,7 @@ let topic = {
    },
    price: {
       required: true,
-      type: 'int',
+      type: 'float',
       notNull: true,
       unsigned: true,
    },
