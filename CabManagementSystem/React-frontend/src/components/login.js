@@ -10,17 +10,19 @@ class Login extends React.Component {
          },
       };
    }
-
+   componentDidMount(){ 
+      console.log("Login module loaded");
+  } 
    componentWillUnmount(){
       history.push('/drivers', { some: 'state' });
    }
-   login = () => {
-      history.push('/drivers', { some: 'state' });
 
-/*       fetch(this.state.serverConfig.host + '/login', {
+   login = () => {
+      //history.push('/drivers', { some: 'state' });
+      fetch(this.state.serverConfig.host + '/login', {
          method: 'post',
          body: JSON.stringify({
-            email: this.refs.username.val ue, pwd: this.refs.password.value
+            email: this.refs.username.value, pwd: this.refs.password.value
          }),
          headers: { 'Content-Type': 'application/json' }
       })
@@ -31,7 +33,7 @@ class Login extends React.Component {
             if (res.status === "success") {
                history.push("/drivers", {});
             }
-         }) */
+         })
    }
 
    render () {

@@ -109,7 +109,7 @@ app.get('/', function (req, res) {
 app.get('/getDrivers', function (req, res) {
    res.header("Access-Control-Allow-Origin", "*");
    con.query("select * from drivers", function (err, data) {
-      //console.log(data);
+      console.log(data);
       res.json(data);
    });
 });

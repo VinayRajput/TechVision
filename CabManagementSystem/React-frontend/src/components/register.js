@@ -3,7 +3,7 @@ class Register extends React.Component {
 
    constructor () {
       super();
-      this.state={
+      this.state = {
          serverConfig: {
             host: 'http://localhost:8080'
          }
@@ -11,18 +11,18 @@ class Register extends React.Component {
    }
 
    register = () => {
-      fetch(this.state.serverConfig.host+'/register',{
-         method:'post',
-         body:JSON.stringify({
-            name:this.refs.name.value,
-            email:this.refs.username.value, pwd:this.refs.password.value
+      fetch(this.state.serverConfig.host + '/register', {
+         method: 'post',
+         body: JSON.stringify({
+            name: this.refs.name.value,
+            email: this.refs.username.value, pwd: this.refs.password.value
          }),
-         headers:{'Content-Type':'application/json'}
+         headers: { 'Content-Type': 'application/json' }
       })
-      //.then(res => res.json())
-      .then(res =>{
-         console.log(res);
-      })
+         //.then(res => res.json())
+         .then(res => {
+            console.log(res);
+         })
    }
 
    render () {
@@ -54,7 +54,7 @@ class Register extends React.Component {
                               <input type="button" onClick={this.register} name="submit" className="btn btn-info btn-md" value="submit" />
                            </div>
                            <div id="register-link" className="text-right">
-                              <a href="/register" className="text-info">Register here</a>
+                              <a href="/login" className="text-info">Login here</a>
                            </div>
                         </form>
                      </div>

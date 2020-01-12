@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 //import util from './util';
-
 
 class Drivers extends Component {
    constructor (props) {
@@ -17,12 +16,34 @@ class Drivers extends Component {
       this.fetchDriversList();
    }
 
+   static getDerivedStateFromProps (props, state) {
+      console.log("getDerivedStateFromProps");
+      console.log(props, state);
+      return {}
+   }
+
+   static shouldComponentUpdate(){
+      console.log('Should Component updated');
+   }
+   componentDidUpdate(){
+      console.log('Component updated');
+   }
+
+   componentWillUnmount(){ 
+      console.log("Component will unmount");
+      debugger;
+  } 
+
+   componentDidMount(){ 
+      console.log("Drivers module loaded");
+  } 
+
    fetchDriversList = () => {
       fetch(this.state.serverConfig.host + '/getDrivers')
          .then(response => response.json())
          .then(data => {
             this.setState({ DriversList: data });
-            console.log(data);
+            //console.log(data);
          });
    }
 
