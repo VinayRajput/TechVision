@@ -12,7 +12,5 @@ class DashboardController {
          <h2>Hellow from Dashboard</h2>
       </div>)
    }
-
 }
-
 export default DashboardController;
