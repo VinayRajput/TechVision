@@ -26,13 +26,18 @@
 
 ## 🧐 About <a name = "es7-class"></a>
 
-> node ES7-class.js
+> node ES7-class.js 
 ```
 Human { name: 'Vinay', age: 39, gender: 'male' }
 Human { name: 'Sumeet', age: 26, gender: 'male' }
 Human { name: 'Neelam', age: 39, gender: 'female' }
+{ name: 'Vinay',
+  age: 39,
+  gender: 'male',
+  education: 'Post Graduate',
+  location: 'Delhi',
+  nationality: 'Indian' }
 ```
-
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 

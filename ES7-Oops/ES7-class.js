@@ -9,13 +9,13 @@ class Human {
     }
 }
 
-/* Vinay = new Human('Vinay', 39, 'male');
+Vinay = new Human('Vinay', 39, 'male');
 Sumeet = new Human('Sumeet', 26, 'male');
 Neelam = new Human('Neelam', 39, 'female');
 
 console.log(Vinay);
 console.log(Sumeet);
-console.log(Neelam); */
+console.log(Neelam);
 
 
 class Person extends Human {
