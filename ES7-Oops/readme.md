@@ -38,3 +38,28 @@ Human { name: 'Neelam', age: 39, gender: 'female' }
   location: 'Delhi',
   nationality: 'Indian' }
 ```
+
+
+> node ES7-Human.js
+```
+someone { name: 'Vinay', age: 39 }
+jasmeetObj Jasmeet
+abc { name: 'Shravan', age: 30 }
+```
+
+
+> node ES7-Person.js
+```
+someone { name: 'Vinay', age: 39 }
+jasmeetObj Jasmeet
+abc { name: 'Shravan', age: 30 }
+Person {
+  name: 'Vinay',
+  age: 39,
+  gender: 'male',
+  education: 'Post Graduate',
+  location: 'Delhi',
+  nationality: 'Indian' }
+  ```
+
+

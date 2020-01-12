@@ -33,5 +33,8 @@ function abc(name,age){
 var ab = new abc('Shravan',30);
 
 
+console.log('someone',someone);
+console.log('jasmeetObj', jasmeetObj.name);
+console.log(ab);
 
 
