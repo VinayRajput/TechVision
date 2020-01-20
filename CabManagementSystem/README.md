@@ -37,5 +37,12 @@ open a new tab <br/>
 goto folder React-frontend
 > npm start
 
+ 
+
+### Login to be implemented by JWT
+> install jwt on react folder
+> encrypt password with jwt and send it via post to server
+> store jwt token 
+> send jwt token as 'key' via middleware redux
 
 
