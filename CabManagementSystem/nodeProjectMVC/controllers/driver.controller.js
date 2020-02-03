@@ -1,10 +1,12 @@
 let driverController = {};
 const con = require('../configs/connection');
 
+
 //driverController.get('/getDrivers', function (req, res) {
 driverController.getDrivers = function (req, res) {
    res.header("Access-Control-Allow-Origin", "*");
-   con.query("select * from drivers", function (err, data) {
+   console.log('get driver is called inside driver controller');
+   con.query("select * from driver", function (err, data) {
       res.json(data);
    });
 };
@@ -12,7 +14,7 @@ driverController.getDrivers = function (req, res) {
 //driverController.get('/getDriver/:id', function (req, res,id) {
 driverController.getDriverById = function (req, res) {
    res.header("Access-Control-Allow-Origin", "*");
-   con.query("select * from drivers where id=" + req.param.id, function (err, data) {
+   con.query("select * from driver where id=" + req.param.id, function (err, data) {
       res.json(data);
    });
 };
@@ -20,14 +22,14 @@ driverController.getDriverById = function (req, res) {
 //driverController.delete('/deleteDriver/:id', function (req, res) {
 driverController.deleteDriver = function (req, res) {
    res.header("Access-Control-Allow-Origin", "*");
-   con.query("delete * from drivers where id=" + req.param.id, function (err, data) {
+   con.query("delete * from driver where id=" + req.param.id, function (err, data) {
       res.json(data);
    });
 };
 /**************/
 //driverController.post('/addDriver', function (req, res) {
 driverController.addDriver = function (req, res) {
-   const queryString = `insert into drivers(license, dob, name) values("${req.body.license}","${req.body.dob}","${req.body.name}")`;
+   const queryString = `insert into driver(license, dob, name) values("${req.body.license}","${req.body.dob}","${req.body.name}")`;
 
    con.query(queryString, function (err, data) {
       if (err) {

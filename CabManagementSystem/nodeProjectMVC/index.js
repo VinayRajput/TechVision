@@ -20,8 +20,7 @@ dbQuery = (sqlQuery, cb) => {
    }
    con.connect(function (err) {
       if (err) throw err;
-      console.log("connected to database in nodeProject MVC");
+      console.log("connected to database in nodeProject MVC index");
    });
-
 app.use('/',driverRoutes);
 app.listen(8080,'localhost');
