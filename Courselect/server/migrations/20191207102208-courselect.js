@@ -10,6 +10,8 @@ var course = require("../model/course");
 var subject = require("../model/subject");
 var session = require("../model/session");
 var topic = require("../model/topic");
+var user = require("../model/user");
+
 var mapping = require("../model/mapping");
 var async = require('async');
 
@@ -28,11 +30,12 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db, callback) {
-  db.createTable('topic', topic, callback);
+/*   db.createTable('topic', topic, callback);
   db.createTable('session', session, callback);
   db.createTable('subject', subject, callback);
   db.createTable('course', course, callback);
-  db.createTable('mapping', mapping, callback);
+  db.createTable('mapping', mapping, callback); */
+  db.createTable('user', user, callback);
 };
   
 exports.down = function (db, callback) {
@@ -45,6 +48,7 @@ exports.down = function (db, callback) {
   db.dropTable('subject',callback);
   db.dropTable('course',callback);
   db.dropTable('mapping',callback);
+  db.dropTable('user',callback);
 //  db.dropTable('migrations');
 };
 

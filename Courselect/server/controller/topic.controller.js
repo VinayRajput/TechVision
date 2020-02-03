@@ -14,7 +14,8 @@ exports.add = function (req, res) {
    });
    console.log(record);
    record.save(function (err, row) {
-      res.json(row);
+      if(err) throw err;
+      res.json(row); 
    });
 }
 
@@ -80,6 +81,4 @@ exports.delete = function (req, res) {
          res.json({"noRecord":"No Record Found"});
       }
    })
-
-
 }
