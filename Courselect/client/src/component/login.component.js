@@ -8,13 +8,13 @@ export default class Login extends React.Component {
       super();
       this.state = {
          serverConfig: {
-            host: "http://localhost:8080/"
+            host: "http://localhost:8080"
          }
       }
    };
 
    login = () => {
-      debugger;
+      //debugger;
       //history.push('/drivers', { some: 'state' });
       fetch(this.state.serverConfig.host + '/auth/login', {
          method: 'post',
@@ -35,7 +35,7 @@ export default class Login extends React.Component {
 
    render () {
       return (<div className="col-md-6 container p-3 my-3">
-         <Form novalidate onSubmit={this.login}>
+         <Form>
             <Form.Group controlId="formBasicEmail">
                <Row>
                   <Col>
@@ -62,7 +62,7 @@ export default class Login extends React.Component {
             <Form.Group controlId="formBasicCheckbox">
                <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button type="button"  variant="primary" type="submit">
+            <Button type="button"  variant="primary" onClick={this.login}>
                Submit
                </Button>
          </Form>

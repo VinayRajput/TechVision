@@ -1,10 +1,6 @@
 var mysqlModel = require('mysql-model');
-
-var db = mysqlModel.createConnection({
-   host     : '127.0.0.1',
-   user     : 'root',
-   password : '',
-   database : 'courselect',
- });
+var config = require('../configs/config.json')
+const dbConfig = config.dbConfig;
+var db = mysqlModel.createConnection(dbConfig);
 
  module.exports = db;
