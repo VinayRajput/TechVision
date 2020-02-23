@@ -172,7 +172,7 @@ CREATE TABLE `topic` (
   `length` varchar(10) NOT NULL,
   `weightage` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `topic` (
 
 LOCK TABLES `topic` WRITE;
 /*!40000 ALTER TABLE `topic` DISABLE KEYS */;
-INSERT INTO `topic` VALUES (2,'Institute profile',0,'0:30',0),(3,'HTML - Introduction',500,'5:00',5),(4,'HTML - BASIC',800,'10:00',5),(9,'Record Sample',399.99,'30:00',20),(11,'Record Sample',399.99,'30:00',20),(12,'Record Sample',399.99,'30:00',20),(13,'Record Sample',399.99,'30:00',20),(14,'Record Sample',399.99,'30:00',20);
+INSERT INTO `topic` VALUES (2,'Institute profile',0,'0:30',0),(3,'HTML - Introduction',500,'5:00',5),(4,'HTML - BASIC',800,'10:00',5),(9,'Record Sample',399.99,'30:00',20),(11,'Record Sample',399.99,'30:00',20),(12,'Record Sample',399.99,'30:00',20),(13,'Record Sample',399.99,'30:00',20),(14,'Record Sample',399.99,'30:00',20),(15,'Record Sample',399.99,'30:00',20);
 /*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-16 23:20:22
+-- Dump completed on 2020-02-23 13:27:51

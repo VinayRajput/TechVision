@@ -11,8 +11,9 @@ var subject = require("../model/subject");
 var session = require("../model/session");
 var topic = require("../model/topic");
 var user = require("../model/user");
+var userSession = require("../model/userSession");
 var MysqlTools = require('mysql-tools');
-var config = require('../configs/config.json')
+var config = require('../configs/config.json');
 var dbConfig = config.dbConfig;
 
 var mapping = require("../model/mapping");
@@ -70,6 +71,7 @@ exports.down = function (db, callback) {
       db.dropTable('course', callback);
       db.dropTable('mapping', callback);
       db.dropTable('user', callback);
+      db.dropTable('userSession', callback);
       return;
     }
   });

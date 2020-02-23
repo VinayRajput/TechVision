@@ -12,7 +12,7 @@ exports.add = function (req, res) {
       length: "30:00",
       weightage: 20
    });
-   console.log(record);
+   
    record.save(function (err, row) {
       if(err) throw err;
       res.json(row); 

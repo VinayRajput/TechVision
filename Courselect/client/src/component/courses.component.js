@@ -1,13 +1,14 @@
 import React from 'react';
 
- class Courses extends React.Component{
-   controller(){
-      this.state={};
+class Courses extends React.Component {
+   constructor () {
+      super();
+      this.state = {};
 
    }
-   render(){
-      return(<div>
-           Courses component
+   render () {
+      return (<div>
+         Courses component
          </div>);
    }
 }
