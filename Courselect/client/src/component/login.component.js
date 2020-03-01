@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
+import 'whatwg-fetch';
 import history from '../history';
 
 class Login extends React.Component {
@@ -26,8 +27,9 @@ class Login extends React.Component {
       this.postMethod(this.state.serverConfig.host + `/auth/userAuth`, bodyData)
          .then(res => res.json())
          .then(res => {
+            console.log(res.auth === "valid");
             if (res.auth === "valid") {
-
+               history.push("/courses", {});
             }
          })
    }
