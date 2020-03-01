@@ -1,0 +1,79 @@
+	TvItGuru
+	Itguru@456
+
+==================================
+	MEAN (fullstack developer)	:  MangoDB, ExpresJS, Angular, NodeJS
+	SPA				:  Single page application 
+	Component			:  Every section/part/divison is considered as 					component	
+	ES				: ECMA 5.1, 6 , 7 , 8 
+		
+	Environment			:
+					NodeJS 10+
+					Editor : VSCode
+					Angular CLI 
+						npm install @angular/cli --g		
+
+
+	Create angular project
+		
+		$ng --version	
+		$ng new <project_name>
+		
+	How to build and start
+			--chane project directory 
+		$cd <project_name>
+
+				--build and run 
+		$ng serve 
+		or
+		$ng s
+		or
+		$ng serve --open
+
+		or
+		$ng s --o --port 4300
+
+
+		localhost:4200	
+			
+	Project's Structure
+		stock
+			e2e		: for testing
+			node_modules	: library/ dependency
+			src
+				app
+				asset
+
+				index.html
+				main.ts
+				style.css
+
+			angualr.json	project configuration 
+
+			package.json	 project dependency 	
+
+			karma.json 	 testing
+			jasmine.json	testing		
+				
+		
+		
+		
+				
+					
+
+	index.html - main.ts - AppModule - AppComponet 
+					  app.component.html	: template
+					  app.component.css	: style 
+					  app.component.spec.ts : unit testing 
+					  app.component.ts	: type script 
+
+
+
+
+	How to creare component
+		ng g c header
+		ng g c footer
+	How to pipe , what's is pipe
+
+		ng g p <pipename>			
+	
