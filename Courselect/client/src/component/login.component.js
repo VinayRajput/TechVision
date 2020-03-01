@@ -13,7 +13,6 @@ class Login extends React.Component {
       }
    };
 
-
    componentDidMount () {
       if (localStorage.sessionID) {
          this.authenticateUser(localStorage.sessionID);
@@ -62,7 +61,7 @@ class Login extends React.Component {
          .then(res => {
             localStorage.setItem('sessionID', res.sessionID);
             if (res.status === "success") {
-               history.push("/drivers", {});
+               history.push("/courses", {});
             }
          })
    }

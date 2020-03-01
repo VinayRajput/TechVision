@@ -38,8 +38,8 @@ exports.up = function (db, callback) {
     db.createTable('subject', subject, callback);
     db.createTable('course', course, callback);
     db.createTable('mapping', mapping, callback);
-    db.createTable('user', user, callback);
-    db.createTable('userSession', userSession, callback); */
+    db.createTable('user', user, callback);*/
+    db.createTable('userSession', userSession, callback); /**/
   dbConfig.sqlFilePath = config.mysqlDumpPath
 
   tool.restoreDatabase(dbConfig, function (error, output, message) {
