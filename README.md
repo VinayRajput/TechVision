@@ -2,11 +2,9 @@
 
 Fresh start of basic javascript underrstanding and nodejs questions
 
-## Use `node {filename}.js` to see console.log output
+Use `node {filename}.js` to see console.log output
 
 ## 20 question to practice basic javascript in nodejs
-
-###
 
 Question D1: WAP to input the marks of 10 students in an array of integers and display the marks.
 -----
