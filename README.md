@@ -1,3 +1,3 @@
 # TechVision
 
-Projects moved to different branches
+Projects moved to respective branches
