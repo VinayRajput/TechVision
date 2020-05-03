@@ -1,3 +1,6 @@
 # TechVision
 
-Projects moved to respective branches
+Projects started in TechVision IT for practice
+
+  - all projects moved to respective branches
+
