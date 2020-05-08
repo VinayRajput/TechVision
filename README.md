@@ -2,7 +2,7 @@
 
 Fresh start of basic javascript underrstanding and nodejs questions
 
-# Use `node {filename}.js` to see console.log output
+Use `node {filename}.js` to see console.log output
 
 ## 20 question to practice basic javascript in nodejs
 
@@ -70,3 +70,4 @@ Question D19: WAP to insert a value in the array at desired location.
 -----
 
 Question D20: WAP to insert a value in the sorted array.
+-----
