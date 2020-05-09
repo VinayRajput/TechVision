@@ -13,8 +13,9 @@ console.log(flat);
 console.log(flat.total());
 
 //2nd via recursive method
-let flattenArray = [];
+
 flatAnArray = function (arr) {
+   let flattenArray = [];
    var arr = arr;
    _helper = (array) => {
 
@@ -28,10 +29,11 @@ flatAnArray = function (arr) {
       }
    }
    _helper(arr);
+   return flattenArray;
 }
-flatAnArray(ar);
-console.log(flattenArray);
-console.log(flattenArray.total());
+
+console.log(flatAnArray(ar));
+console.log(flatAnArray(ar).total());
 
 
 
