@@ -17,6 +17,7 @@ function askQuestion () {
                      if(!pushed){
                         arr.splice(i,0,+val);
                         pushed = true;
+                           break;
                      }
                   }
             }
