@@ -25,12 +25,13 @@ flatAnArray = function (arr) {
    _helper(arr);
    return flattenArray;
 }
-console.log(flatAnArray(ar));
-console.log(flatAnArray(ar).total());
+console.log(`flatten array`,flatAnArray(ar));
+console.log('sum',flatAnArray(ar).total());
 
 //2nd via Array.flat method,
 /**but its good only for 1 level of complexity, check the log * */
 let flat = ar.flat();
+console.log('\n\nArray.flat() only takes care of 1 level of dimension')
 console.log(flat);
 console.log(flat.total());
 
