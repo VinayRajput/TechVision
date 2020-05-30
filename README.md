@@ -73,3 +73,17 @@ Question D20: WAP to insert a value in the sorted array.
 -----
 
 Question D21: WAP to get a sum of multi dimensiional array [22,33,44,55,[33,4,55,66,66],”abc”,[33,22,33,44,55,66,22]]
+-----
+
+Question D23:
+fetch and save online data
+-----
+
+Question D24:
+JSON to CSV
+-----
+
+
+Question D25:
+ES6 Inheritance example for e-commerce
+-----
