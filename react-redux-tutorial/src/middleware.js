@@ -1,14 +1,14 @@
-const cartMiddleware = store => next => action =>{
+const cartMiddleware = store => next => action => {
       switch(action.type){
          case 'ADD':
             console.log('Middleware Add action trigerred');
             next(action)
          break;
-         case 'Delete':
+         case 'REMOVE':
             console.log('Middleware Delete action trigerred');
             next(action)
          break;
-         case 'Change':
+         case 'CHANGE':
             console.log('Middleware Change action trigerred');
             next(action)
          break;
@@ -19,4 +19,5 @@ const cartMiddleware = store => next => action =>{
       
 }
 export default cartMiddleware;
+
 

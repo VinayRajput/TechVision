@@ -7,10 +7,12 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import PostReducer from './Reducer/reducer';
-import cartMiddleware from './middleware';
+  vdfwer3
+   import cartMiddleware from './middleware';
 
-const store = createStore(PostReducer, applyMiddleware(cartMiddleware));
-
+const store = createStore(PostReducer , applyMiddleware(cartMiddleware)
+);
+   
 ReactDOM.render(
    <Provider store={store}>
       <App />

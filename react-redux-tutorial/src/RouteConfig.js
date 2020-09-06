@@ -6,6 +6,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './css/app.css';
+import cart from './components/cart';
 
 export default class RouteConfig extends React.Component {
    render () {
@@ -14,6 +15,7 @@ export default class RouteConfig extends React.Component {
             <Header />
             <div className='body'>
                <Route  path="/" exact component={ProductListing} />
+               <Route  path="/cart" exact component={cart} />
             </div>
             <Footer />
          </Router>

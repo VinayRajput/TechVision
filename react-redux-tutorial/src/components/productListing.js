@@ -3,17 +3,21 @@ import {connect} from 'react-redux';
 import MiniCart from './miniCart';
 
 class  ProductListing extends React.Component {
-
    addToCart = (data) =>{
         console.log("dispatching: ",data);
-        this.props.dispatch({type:'ADD', data})
+        this.props.dispatch({type:'ADD', data});
    }
+   
+   removeItem = (id)=>{
+      this.props.dispatch({type:'REMOVE', data:{"id":id} });
+   }
+
    render() {
       return (<div>
          <div className="container py-5">
             <div className="row">
                <div className="col-lg-8 mx-auto">
-                  <MiniCart />
+                  <MiniCart removeItem = {this.removeItem} />
                   <ul className="list-group shadow">
 
                      <li className="list-group-item">
@@ -23,7 +27,7 @@ class  ProductListing extends React.Component {
                               <p className="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
                               <div className="d-flex align-items-center justify-content-between mt-1">
                                  <h6 className="font-weight-bold my-2">$120.00</h6>
-                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:1, price:'$120',name:'Nike Shoe'})}}>Add to Cart</button>
+                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:1, price:'$120', qty:1, name:'Nike Shoe'})}}>Add to Cart</button>
                                  <ul className="list-inline small">
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
@@ -43,7 +47,7 @@ class  ProductListing extends React.Component {
                               <p className="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
                               <div className="d-flex align-items-center justify-content-between mt-1">
                                  <h6 className="font-weight-bold my-2">$99.00</h6>
-                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:1, price:'$99',name:'Parrot green Shoe'})}}>Add to Cart</button>
+                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:2, price:'$99',name:'Parrot green Shoe'})}}>Add to Cart</button>
                                  <ul className="list-inline small">
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
@@ -63,7 +67,7 @@ class  ProductListing extends React.Component {
                               <p className="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
                               <div className="d-flex align-items-center justify-content-between mt-1">
                                  <h6 className="font-weight-bold my-2">$140.00</h6>
-                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:1, price:'$140',name:'Green Shoe'})}}>Add to Cart</button>
+                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:3, price:'$140',name:'Green Shoe'})}}>Add to Cart</button>
                                  <ul className="list-inline small">
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
@@ -83,7 +87,7 @@ class  ProductListing extends React.Component {
                               <p className="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
                               <div className="d-flex align-items-center justify-content-between mt-1">
                                  <h6 className="font-weight-bold my-2">$220.00</h6>
-                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:1, price:'$220',name:'Brown Shoe'})}}>Add to Cart</button>
+                                 <button type="button" className="btn btn-sm btn-primary btn-success" onClick={()=>{this.addToCart({id:4, price:'$220',name:'Brown Shoe'})}}>Add to Cart</button>
                                  <ul className="list-inline small">
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
                                     <li className="list-inline-item m-0"><i className="fa fa-star text-success"></i></li>
